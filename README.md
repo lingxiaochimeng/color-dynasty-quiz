@@ -29,15 +29,6 @@ python -m http.server 8000
 # 然后访问 http://localhost:8000
 ```
 
-## 部署到 GitHub Pages
-
-1. 把 `index.html` 与 `images/` 放到仓库根目录（**不要**保留外层文件夹）。
-2. 仓库 **Settings → Pages → Source** 选 `Deploy from a branch`。
-3. 分支选 `main`，目录选 `/ (root)`，保存。
-4. 稍后访问 `https://<用户名>.github.io/<仓库名>/`。
-
-> 注意：GitHub Pages 的 `Deploy from a branch` 只支持根目录 `/` 或 `/docs`。若把站点放在其他子目录，请改用 GitHub Actions 部署。
-
 ## 项目结构
 
 ```
@@ -55,7 +46,7 @@ python -m http.server 8000
 └── README.md
 ```
 
-`mapping-table.html`、`question-bank.html`、`image-preview.html` 是设计与评审阶段的产物，不参与应用运行，可按需删除。
+`mapping-table.html`、`question-bank.html`、`image-preview.html` 是设计与评审阶段的产物，不参与应用运行。
 
 ## 计分与判定规则
 
@@ -85,7 +76,7 @@ python -m http.server 8000
 ## 素材与授权
 
 - 全部配图来自 [Wikimedia Commons](https://commons.wikimedia.org/)，授权类型为 **Public domain** 或 **CC0**，可自由使用、修改与再分发，无署名义务。
-- 每张图的出处、作者与授权类型记录在 [`images/credits.json`](images/credits.json)，保留该文件是更规范的做法。
+- 每张图的出处、作者与授权类型记录在 [`images/credits.json`](images/credits.json)。
 - 颜色名取自中国传统国画颜料名；色值为常用国画色彩参考值，非严格印刷标准。
 - 朝代简介依据各朝代公认的时代气质与文化成就整理。
 
