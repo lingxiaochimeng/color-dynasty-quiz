@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国画颜色 · 朝代 · 性格 对照表</title>
+<style>
+  :root{
+    --paper:#f7f3e9;
+    --paper-2:#fffdf7;
+    --ink:#2b2b2b;
+    --ink-2:#6b6355;
+    --line:#ddd3c0;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 20% 10%, #fffdf6 0%, transparent 45%),
+      radial-gradient(circle at 85% 90%, #f2ead9 0%, transparent 50%),
+      var(--paper);
+    color:var(--ink);
+    font-family:"Songti SC","STSong","Source Han Serif SC","Noto Serif SC",SimSun,serif;
+    line-height:1.75;
+    padding:48px 20px 80px;
+  }
+  .wrap{max-width:1180px;margin:0 auto;}
+  header{text-align:center;margin-bottom:14px;}
+  .seal{
+    display:inline-block;font-size:13px;letter-spacing:.35em;
+    color:#9a2b23;border:1px solid #c9a89b;border-radius:3px;
+    padding:5px 12px 5px 16px;margin-bottom:20px;background:#fff8f4;
+  }
+  h1{
+    font-size:34px;font-weight:600;letter-spacing:.12em;margin:0 0 12px;
+    color:#1f1c17;
+  }
+  h1 small{display:block;font-size:14px;font-weight:400;letter-spacing:.3em;color:var(--ink-2);margin-top:12px;}
+  .lead{
+    max-width:760px;margin:22px auto 0;font-size:15px;color:var(--ink-2);
+    text-align:justify;
+  }
+  .rule{
+    height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);
+    margin:34px 0 40px;
+  }
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+    gap:22px;
+  }
+  .card{
+    display:flex;gap:0;background:var(--paper-2);
+    border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    box-shadow:0 2px 10px rgba(80,64,40,.06);
+  }
+  .swatch{
+    flex:0 0 118px;position:relative;display:flex;
+    align-items:flex-end;justify-content:center;
+    padding-bottom:14px;
+  }
+  .swatch span{
+    font-size:12px;letter-spacing:.15em;padding:2px 8px;border-radius:20px;
+    background:rgba(255,255,255,.78);color:#333;font-family:ui-monospace,Menlo,Consolas,monospace;
+  }
+  .body{flex:1;padding:16px 18px 18px;}
+  .row-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .idx{
+    font-size:12px;color:#a8987d;font-family:ui-monospace,Menlo,Consolas,monospace;
+  }
+  .color-name{font-size:21px;font-weight:600;letter-spacing:.08em;}
+  .dyn{
+    font-size:14px;color:#8a2b23;border:1px solid #d9b7ad;border-radius:3px;
+    padding:1px 8px;background:#fdf6f3;letter-spacing:.1em;
+  }
+  .meta{
+    margin-top:8px;font-size:12.5px;color:var(--ink-2);
+    font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:.02em;
+  }
+  .traits{
+    margin-top:10px;font-size:13.5px;color:#4a4438;
+  }
+  .traits b{color:#8a2b23;font-weight:600;}
+  .intro{
+    margin-top:9px;font-size:13.5px;color:#55503f;text-align:justify;
+    padding-top:9px;border-top:1px dashed var(--line);
+  }
+  .legend{
+    margin-top:44px;padding:20px 22px;background:#fbf7ee;border:1px solid var(--line);
+    border-radius:10px;font-size:13.5px;color:var(--ink-2);
+  }
+  .legend h2{font-size:15px;margin:0 0 10px;color:#1f1c17;letter-spacing:.1em;}
+  .legend ul{margin:0;padding-left:20px;}
+  .legend li{margin:5px 0;}
+  .legend code{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f1ead9;padding:1px 5px;border-radius:3px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="seal">第 一 步 · 对 照 表</div>
+    <h1>国画颜色 · 朝代 · 性格 对照表
+      <small>COLOR &nbsp;·&nbsp; DYNASTY &nbsp;·&nbsp; TEMPERAMENT</small>
+    </h1>
+    <p class="lead">
+      全表共 <b>12 组</b>。每组将一种「中国传统国画颜料色」与一个「朝代」相配，二者共享同一组性格内核，
+      因此测试结果可同时给出一个颜色与一个朝代。<b>性格关键词仅用于内部计分与校对，最终网页应用不会展示性格描述</b>；
+      应用只渲染该颜色，并附该朝代的简要介绍。
+    </p>
+  </header>
+
+  <div class="rule"></div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="swatch" style="background:#fff2df"><span>#FFF2DF</span></div>
+      <div class="body">
+        <div class="row-top"><span class="idx">01</span><span class="color-name">蛤白</span><span class="dyn">夏</span></div>
+        <div class="meta">RGB 255,242,223 &nbsp;|&nbsp; 矿物色 · 亦称胡粉、白粉</div>
+        <div class="traits"><b>性格内核：</b>质朴本真 · 温厚纯粹 · 浑朴自然</div>
+        <div class="intro">约公元前2070—前1600年，中国史籍记载的第一个世袭制王朝，由禹之子启开启“家天下”。尚质朴、重农桑，是华夏文明的初曙。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="swatch" style="background:#ff461f"><span>#FF461F</span></div>
+      <div class="body">
+        <div class="row-top"><span class="idx">02</span><span class="color-name">朱砂</span><span class="dyn">商</span></div>
+        <div class="meta">RGB 255,70,31 &nbsp;|&nbsp; 矿物色 · 亦称辰砂</div>
+        <div class="traits"><b>性格内核：</b>虔敬神秘 · 笃信重礼 · 刚毅果敢</div>
+        <div class="intro">约公元前1600—前1046年，青铜文明鼎盛，甲骨文与占卜祭祀发达，晚期定都殷（今河南安阳），敬鬼神而重礼制。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="swatch" style="background:#ffc64b"><span>#FFC64B</span></div>
+      <div class="body">
+        <div class="row-top"><span class="idx">03</span><span class="color-name">雌黄</span><span class="dyn">周</span></div>
+        <div class="meta">RGB 255,198,75 &nbsp;|&nbsp; 矿物色 · 三硫化二砷</div>
+        <div class="traits"><b>性格内核：</b>温文尔雅 · 尚礼重序 · 中庸平和</div>
+        <div class="intro">公元前1046—前256年，确立分封制与礼乐文明，西周都镐京、东周迁洛邑，春秋战国诸子百家争鸣，奠定中华文教根基。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="swatch" style="background:#50616d"><span>#50616D</span></div>
+      <div class="body">
+        <div class="row-top"><span class="idx">04</span><span class="color-name">墨色</span><span class="dyn">秦</span></div>
+        <div class="meta">RGB 80,97,109 &nbsp;|&nbsp; 松烟墨 · 国画之本</div>
+        <div class="traits"><b>性格内核：</b>刚烈果决 · 崇法尚统 · 开拓进取</div>
+        <div class="intro">公元前221—前206年，秦始皇扫六合而统一天下，首创中央集权与郡县制，书同文、车同轨，北筑长城、南征百越。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="swatch" style="background:#845a33"><span>#845A33</span></div>
+      <div class="body">
+        <div class="row-top"><span class="idx">05</span><span class="color-name">赭石</span><span class="dyn">汉</span></div>
+        <div class="meta">RGB 132,90,51 &nbsp;|&nbsp; 矿物色 · 赤铁矿</div>
+        <div class="traits"><b>性格内核：</b>雄浑厚重 · 包容大气 · 开疆拓土</div>
+        <div class="intro">公元前202—公元220年，刘邦立汉，经文景之治与汉武帝开疆，凿空西域、开通丝绸之路，“汉族”“汉字”由此得名。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="swatch" style="background:#9d2933"><span>#9D2933</span></div>
+      <div class="body">
+        <div class="row-top"><span class="idx">06</span><span class="color-name">胭脂</span><span class="dyn">魏晋</span></div>
+        <div class="meta">RGB 157,41,51 &nbsp;|&nbsp; 植物色 · 红蓝花、茜草所制</div>
+        <div class="traits"><b>性格内核：</b>敏感多情 · 清雅风骨 · 率性飘逸</div>
+        <div class="intro">公元220—420年，玄学清谈、魏晋风度盛行，士人崇尚风骨，书法（二王）与人物画大兴，是中国艺术自觉的时代。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="swatch" style="background:#f36838"><span>#F36838</span></div>
+      <div class="body">
+        <div class="row-top"><span class="idx">07</span><span class="color-name">朱磦</span><span class="dyn">隋</span></div>
+        <div class="meta">RGB 243,104,56 &nbsp;|&nbsp; 矿物色 · 亦称硃磦</div>
+        <div class="traits"><b>性格内核：</b>通变务实 · 志向高远 · 承前启后</div>
+        <div class="intro">公元581—618年，结束数百年南北分裂重归一统，开创科举制、开凿大运河，贯通南北，为盛唐格局奠基。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="swatch" style="background:#ffb61e"><span>#FFB61E</span></div>
+      <div class="body">
+        <div class="row-top"><span class="idx">08</span><span class="color-name">藤黄</span><span class="dyn">唐</span></div>
+        <div class="meta">RGB 255,182,30 &nbsp;|&nbsp; 植物色 · 海藤树树脂</div>
+        <div class="traits"><b>性格内核：</b>明艳张扬 · 自信开放 · 热烈奔放</div>
+        <div class="intro">公元618—907年，历贞观之治、开元盛世，国力鼎盛、万邦来朝，诗歌、书画、乐舞、工艺全面繁荣，气象恢弘。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="swatch" style="background:#003472"><span>#003472</span></div>
+      <div class="body">
+        <div class="row-top"><span class="idx">09</span><span class="color-name">花青</span><span class="dyn">宋</span></div>
+        <div class="meta">RGB 0,52,114 &nbsp;|&nbsp; 植物色 · 蓼蓝、大蓝提制</div>
+        <div class="traits"><b>性格内核：</b>内敛雅致 · 理性沉静 · 细腻严谨</div>
+        <div class="intro">公元960—1279年，文治鼎盛、理学兴起，文人山水花鸟画与汝、官、哥、钧、定瓷器并臻高峰，尚雅尚意、格物致知。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="swatch" style="background:#16a951"><span>#16A951</span></div>
+      <div class="body">
+        <div class="row-top"><span class="idx">10</span><span class="color-name">石绿</span><span class="dyn">元</span></div>
+        <div class="meta">RGB 22,169,81 &nbsp;|&nbsp; 矿物色 · 孔雀石</div>
+        <div class="traits"><b>性格内核：</b>旷达野逸 · 自由疏放 · 不拘一格</div>
+        <div class="intro">公元1271—1368年，蒙古族建立的大一统王朝，文人画（元四家）与元曲杂剧兴盛，士人寄情山水、放逸不羁。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="swatch" style="background:#1685a9"><span>#1685A9</span></div>
+      <div class="body">
+        <div class="row-top"><span class="idx">11</span><span class="color-name">石青</span><span class="dyn">明</span></div>
+        <div class="meta">RGB 22,133,169 &nbsp;|&nbsp; 矿物色 · 蓝铜矿（头青/二青/三青）</div>
+        <div class="traits"><b>性格内核：</b>端方持重 · 务实守序 · 精明干练</div>
+        <div class="intro">公元1368—1644年，朱元璋建明，郑和下西洋、营建紫禁城，市民文学与青花瓷、明式家具工艺繁荣，气象端庄。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="swatch" style="background:#ff4777"><span>#FF4777</span></div>
+      <div class="body">
+        <div class="row-top"><span class="idx">12</span><span class="color-name">洋红</span><span class="dyn">清</span></div>
+        <div class="meta">RGB 255,71,119 &nbsp;|&nbsp; 化学/植物色 · 亦称西洋红</div>
+        <div class="traits"><b>性格内核：</b>精巧繁丽 · 圆融世故 · 追求极致</div>
+        <div class="intro">公元1636—1912年，满族建立的最后一个封建王朝，历康乾盛世，疆域辽阔，工艺美术与瓷器集历代之大成。</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="legend">
+    <h2>编制说明</h2>
+    <ul>
+      <li><b>颜色命名</b>：全部取自中国传统国画颜料名（如朱砂、藤黄、花青、石青、石绿、赭石、胭脂、蛤白等），色值为常用国画色彩参考值（来源：中国国画常用色彩 cht-colors）。</li>
+      <li><b>朝代的性格内核</b>：依据各朝代公认的时代气质与文化成就提炼，属文化意象化的解读，用于保证“颜色—朝代”搭配的内在一致性。</li>
+      <li><b>展示规则</b>：最终应用<b>只呈现颜色与朝代简介</b>，“性格内核”一列仅供出题计分与内部校对，不对用户展示。</li>
+      <li><b>可调整项</b>：颜色数量（现为 12）、朝代取舍（现含夏/商/周/秦/汉/魏晋/隋/唐/宋/元/明/清）、以及具体色值，均可在审核时增删替换。</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

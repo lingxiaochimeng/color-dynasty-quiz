@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>你的国画色与朝代 · 15 题测试</title>
+<style>
+  :root{
+    --paper:#f7f3e9;--paper-2:#fffdf7;--ink:#2b2b2b;--ink-2:#6b6355;
+    --line:#ddd3c0;--seal:#9a2b23;--seal-2:#8a2b23;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 18% 8%, #fffdf6 0%, transparent 45%),
+      radial-gradient(circle at 88% 92%, #f2ead9 0%, transparent 50%),
+      var(--paper);
+    color:var(--ink);
+    font-family:"Songti SC","STSong","Source Han Serif SC","Noto Serif SC",SimSun,serif;
+    line-height:1.75;
+    padding:40px 18px 70px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;}
+  .screen{animation:fade .45s ease both;}
+  @keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  [hidden]{display:none !important;}
+
+  .seal{
+    display:inline-block;font-size:12.5px;letter-spacing:.35em;color:var(--seal);
+    border:1px solid #c9a89b;border-radius:3px;padding:5px 12px 5px 16px;background:#fff8f4;
+  }
+  h1{font-size:clamp(24px,4.4vw,34px);font-weight:600;letter-spacing:.1em;margin:18px 0 10px;color:#1f1c17;}
+  h1 small{display:block;font-size:12.5px;font-weight:400;letter-spacing:.3em;color:var(--ink-2);margin-top:12px;}
+  .lead{max-width:660px;margin:22px auto 0;font-size:14.5px;color:var(--ink-2);text-align:justify;}
+  .rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:30px 0;}
+
+  /* ---------- 首页 ---------- */
+  #screen-intro{text-align:center;}
+  .intro-card{
+    margin-top:26px;background:var(--paper-2);border:1px solid var(--line);border-radius:12px;
+    padding:26px 28px;box-shadow:0 2px 14px rgba(80,64,40,.06);text-align:left;
+  }
+  .intro-card ul{margin:0;padding-left:20px;font-size:14px;color:#4a4438;}
+  .intro-card li{margin:7px 0;}
+  .intro-card b{color:var(--seal-2);}
+  .btn{
+    appearance:none;border:none;cursor:pointer;font-family:inherit;
+    background:var(--seal);color:#fff;font-size:16px;letter-spacing:.18em;
+    padding:13px 40px;border-radius:30px;box-shadow:0 6px 18px rgba(154,43,35,.28);
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(154,43,35,.34);background:#a83227;}
+  .btn.ghost{background:#fff;color:var(--seal);border:1px solid #d9b7ad;box-shadow:none;}
+  .btn.ghost:hover{background:#fdf6f3;box-shadow:0 4px 12px rgba(154,43,35,.12);}
+  .btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none;}
+  .start-row{margin-top:30px;text-align:center;}
+
+  /* ---------- 答题 ---------- */
+  .qhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px;}
+  .qhead .cnt{font-size:12.5px;color:#a8987d;font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;}
+  .qhead .dyn-hint{font-size:12.5px;color:var(--ink-2);}
+  .bar{height:5px;border-radius:4px;background:#eae0cd;overflow:hidden;}
+  .bar i{display:block;height:100%;width:0;border-radius:4px;
+         background:linear-gradient(90deg,#b23a2c,#c9642f);transition:width .35s ease;}
+  .qcard{
+    margin-top:22px;background:var(--paper-2);border:1px solid var(--line);border-radius:12px;
+    padding:26px 26px 12px;box-shadow:0 2px 14px rgba(80,64,40,.06);
+  }
+  .qtext{font-size:clamp(17px,2.6vw,20px);font-weight:600;color:#221f19;margin:0 0 18px;letter-spacing:.02em;}
+  .opts{display:flex;flex-direction:column;gap:10px;}
+  .opt{
+    display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;
+    background:#fff;border:1px solid var(--line);border-radius:9px;cursor:pointer;
+    padding:13px 16px;font-family:inherit;font-size:15px;color:#3a352b;line-height:1.6;
+    transition:border-color .16s ease, background .16s ease, transform .16s ease, box-shadow .16s ease;
+  }
+  .opt:hover{border-color:#c9a89b;background:#fffaf6;transform:translateY(-1px);box-shadow:0 4px 12px rgba(80,64,40,.07);}
+  .opt .k{
+    flex:0 0 22px;color:#a8987d;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;
+    padding-top:1px;
+  }
+  .opt.picked{border-color:var(--seal);background:#fdf6f3;box-shadow:0 4px 14px rgba(154,43,35,.12);}
+  .opt.picked .k{color:var(--seal);font-weight:700;}
+  .qfoot{display:flex;justify-content:space-between;align-items:center;margin-top:18px;}
+
+  /* ---------- 结果 ---------- */
+  #screen-result{text-align:center;}
+  .color-panel{
+    margin-top:26px;border-radius:14px;padding:34px 24px;border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px rgba(60,48,30,.14);position:relative;overflow:hidden;
+  }
+  .color-panel::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(circle at 82% 18%, rgba(255,255,255,.22), transparent 55%);
+  }
+  .color-panel .cn{font-size:clamp(34px,8vw,52px);font-weight:600;letter-spacing:.22em;display:block;}
+  .color-panel .cx{font-size:13px;font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;margin-top:10px;display:block;opacity:.85;}
+  .color-panel .ct{font-size:12.5px;letter-spacing:.3em;margin-top:14px;display:block;opacity:.75;}
+
+  .res-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px;text-align:left;}
+  @media(max-width:680px){.res-grid{grid-template-columns:1fr;}}
+  .res-card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    box-shadow:0 2px 12px rgba(80,64,40,.06);display:flex;flex-direction:column;
+  }
+  .res-card .imgbox{background:#efe9db;display:flex;align-items:center;justify-content:center;height:280px;overflow:hidden;}
+  .res-card .imgbox img{max-width:100%;max-height:280px;object-fit:contain;display:block;}
+  .res-card .cap{padding:15px 18px 17px;flex:1;}
+  .res-card .kicker{font-size:12px;letter-spacing:.26em;color:#a8987d;font-family:ui-monospace,Menlo,Consolas,monospace;}
+  .res-card .ttl{font-size:16px;font-weight:600;margin-top:6px;color:#221f19;}
+  .res-card .sub{font-size:13px;color:var(--ink-2);margin-top:4px;}
+  .res-card .dynname{font-size:22px;font-weight:600;letter-spacing:.14em;color:var(--seal-2);}
+  .res-card .intro{font-size:13.5px;color:#55503f;margin-top:10px;text-align:justify;}
+  .badge{
+    display:inline-block;font-size:11px;font-family:ui-monospace,Menlo,Consolas,monospace;
+    border-radius:20px;padding:1px 9px;margin-top:9px;border:1px solid #e2d7c0;background:#f3ecdc;color:#5b5346;
+  }
+  /* ---------- 得分占比（饼图） ---------- */
+  .pie-sec{
+    margin-top:26px;background:var(--paper-2);border:1px solid var(--line);border-radius:12px;
+    padding:20px 18px 18px;box-shadow:0 2px 14px rgba(80,64,40,.06);text-align:center;
+  }
+  .pie-sec .kicker{font-size:12px;letter-spacing:.26em;color:#a8987d;font-family:ui-monospace,Menlo,Consolas,monospace;}
+  .pie-sec h3{margin:7px 0 3px;font-size:17px;font-weight:600;color:#221f19;letter-spacing:.08em;}
+  .pie-sec .hint{margin:0;font-size:12.5px;color:var(--ink-2);}
+  .pie-wrap{margin:10px 0 4px;}
+  svg.pie{width:min(300px,74vw);height:auto;display:inline-block;touch-action:manipulation;}
+  svg.pie text{pointer-events:none;font-family:inherit;}
+  svg.pie .pc-name{font-size:21px;font-weight:600;letter-spacing:.06em;}
+  svg.pie .pc-dyn{font-size:12.5px;letter-spacing:.2em;opacity:.86;}
+  svg.pie path.sl{cursor:pointer;transition:transform .22s cubic-bezier(.34,1.4,.64,1);}
+  svg.pie path.sl:hover{filter:brightness(1.07);}
+  .pie-cap{
+    font-size:12.5px;color:var(--ink-2);font-family:ui-monospace,Menlo,Consolas,monospace;
+    letter-spacing:.04em;margin-top:2px;
+  }
+
+  .actions{margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .foot{
+    margin-top:34px;padding:18px 22px;background:#fbf7ee;border:1px solid var(--line);
+    border-radius:10px;font-size:12.5px;color:var(--ink-2);text-align:left;
+  }
+  .foot a{color:var(--seal-2);}
+  .foot code{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f1ead9;padding:1px 5px;border-radius:3px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ 首页 ============ -->
+  <section class="screen" id="screen-intro">
+    <div class="seal">国 画 色 · 朝 代</div>
+    <h1>测出你的国画色与朝代
+      <small>COLOR &nbsp;·&nbsp; DYNASTY</small>
+    </h1>
+    <p class="lead">
+      中华文化里，每一种国画颜色、每一个朝代，都有其独特的气质。回答下面 <b>15 道题</b>，
+      看看你的性情最接近哪一种「中国传统国画颜料色」，以及与之相伴的那个朝代。
+    </p>
+    <div class="intro-card">
+      <ul>
+        <li>共 <b>15 题</b>，每题 4 个选项，凭第一直觉作答即可，约需 2 分钟。</li>
+        <li>结果页首项为<b>各颜色的得分占比图</b>，点击任意色块即可查看该颜色与对应朝代。</li>
+        <li>随后给出得分最高的<b>国画颜色</b>（如朱砂、藤黄、花青、石青……）与<b>朝代</b>，配该色国画一幅、朝代配图一幅及朝代简介。</li>
+        <li>结果仅供文化趣味参考，不构成任何专业心理测评结论。</li>
+      </ul>
+    </div>
+    <div class="start-row">
+      <button class="btn" id="btn-start">开 始 测 试</button>
+    </div>
+  </section>
+
+  <!-- ============ 答题 ============ -->
+  <section class="screen" id="screen-quiz" hidden>
+    <div class="qhead">
+      <span class="cnt" id="q-count">第 1 / 15 题</span>
+      <span class="dyn-hint">凭直觉选择最贴近你的一项</span>
+    </div>
+    <div class="bar"><i id="q-bar"></i></div>
+
+    <div class="qcard">
+      <h2 class="qtext" id="q-text"></h2>
+      <div class="opts" id="q-opts"></div>
+      <div class="qfoot">
+        <button class="btn ghost" id="btn-prev" style="font-size:14px;padding:9px 22px;letter-spacing:.1em;">上一题</button>
+        <span class="cnt" id="q-tip" style="color:#b3a68d;">选择后自动进入下一题</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 结果 ============ -->
+  <section class="screen" id="screen-result" hidden>
+    <div class="seal">测 试 结 果</div>
+    <h1 style="margin-top:16px;">你的国画色 · 朝代
+      <small>YOUR COLOR &nbsp;·&nbsp; DYNASTY</small>
+    </h1>
+
+    <div class="pie-sec" id="pie-sec">
+      <div class="kicker">SCORE DISTRIBUTION</div>
+      <h3>各颜色得分占比</h3>
+      <p class="hint">点击任意色块，查看它对应的颜色与朝代</p>
+      <div class="pie-wrap">
+        <svg class="pie" id="pie" viewBox="0 0 220 220" role="img" aria-label="各颜色得分占比图">
+          <circle id="pie-hole" cx="110" cy="110" r="54" fill="#efe9db"></circle>
+          <g id="pie-slices"></g>
+          <text class="pc-name" id="pie-name" x="110" y="106" text-anchor="middle"></text>
+          <text class="pc-dyn"  id="pie-dyn"  x="110" y="127" text-anchor="middle"></text>
+        </svg>
+      </div>
+      <div class="pie-cap" id="pie-cap"></div>
+    </div>
+
+    <div class="color-panel" id="color-panel">
+      <span class="cn" id="res-color-name"></span>
+      <span class="cx" id="res-color-hex"></span>
+      <span class="ct" id="res-color-tag">以 该 色 为 主 调 的 国 画</span>
+    </div>
+
+    <div class="res-grid">
+      <div class="res-card">
+        <div class="imgbox"><img id="res-color-img" alt=""></div>
+        <div class="cap">
+          <div class="kicker">YOUR COLOR</div>
+          <div class="ttl" id="res-color-work"></div>
+          <div class="sub">以该颜色为主调的传世国画</div>
+          <span class="badge" id="res-color-credit"></span>
+        </div>
+      </div>
+      <div class="res-card">
+        <div class="imgbox"><img id="res-dyn-img" alt=""></div>
+        <div class="cap">
+          <div class="kicker">YOUR DYNASTY</div>
+          <div class="dynname" id="res-dyn-name"></div>
+          <div class="sub" id="res-dyn-work"></div>
+          <div class="intro" id="res-dyn-intro"></div>
+          <span class="badge" id="res-dyn-credit"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn" id="btn-again">重 新 测 试</button>
+      <button class="btn ghost" id="btn-home">返 回 首 页</button>
+    </div>
+
+    <div class="foot">
+      <b>关于本页</b>：颜色名称取自中国传统国画颜料名，色值为常用国画色彩参考值；朝代简介依据各朝代公认的时代气质与文化成就整理。
+      全部配图来自 <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>，
+      均为 <b>公有领域（Public domain）</b> 或 <b>CC0</b> 授权，可自由使用；图片来源与作者见 <code>images/credits.json</code>。
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* =========================================================
+   数据：12 个「颜色 — 朝代」原型
+   （性格内核仅用于出题与计分，界面不展示）
+   ========================================================= */
+const ARCHETYPES = [
+  { c:"蛤白", hex:"#FFF2DF", d:"夏",
+    ci:"images/color-01-bai.jpg",    cw:"马远《寒江独钓图》",              cc:"Public domain",
+    di:"images/dynasty-01-xia.jpg",  dw:"嵌绿松石兽面纹铜牌饰（二里头文化）", dc:"CC0 · Daderot",
+    intro:"约公元前2070—前1600年，中国史籍记载的第一个世袭制王朝，由禹之子启开启“家天下”。尚质朴、重农桑，是华夏文明的初曙。" },
+
+  { c:"朱砂", hex:"#FF461F", d:"商",
+    ci:"images/color-02-zhusha.jpg", cw:"李迪《红白芙蓉图》",              cc:"Public domain",
+    di:"images/dynasty-02-shang.jpg",dw:"后母戊鼎（司母戊鼎）",            dc:"CC0 · Gary Todd",
+    intro:"约公元前1600—前1046年，青铜文明鼎盛，甲骨文与占卜祭祀发达，晚期定都殷（今河南安阳），敬鬼神而重礼制。" },
+
+  { c:"雌黄", hex:"#FFC64B", d:"周",
+    ci:"images/color-03-cihuang.jpg",cw:"宋《桑枝黄鸟》",                  cc:"Public domain",
+    di:"images/dynasty-03-zhou.jpg", dw:"何尊（西周青铜尊）",              dc:"CC0 · Gary Todd",
+    intro:"公元前1046—前256年，确立分封制与礼乐文明，西周都镐京、东周迁洛邑，春秋战国诸子百家争鸣，奠定中华文教根基。" },
+
+  { c:"墨色", hex:"#50616D", d:"秦",
+    ci:"images/color-04-mose.jpg",   cw:"梁楷《泼墨仙人图》",              cc:"Public domain",
+    di:"images/dynasty-04-qin.jpg",  dw:"秦始皇兵马俑一号坑",              dc:"CC0 · Gary Todd",
+    intro:"公元前221—前206年，秦始皇扫六合而统一天下，首创中央集权与郡县制，书同文、车同轨，北筑长城、南征百越。" },
+
+  { c:"赭石", hex:"#845A33", d:"汉",
+    ci:"images/color-05-zheshi.jpg", cw:"范宽《溪山行旅图》",              cc:"Public domain",
+    di:"images/dynasty-05-han.jpg",  dw:"汉代青铜马",                      dc:"CC0 · Gary Todd",
+    intro:"公元前202—公元220年，刘邦立汉，经文景之治与汉武帝开疆，凿空西域、开通丝绸之路，“汉族”“汉字”由此得名。" },
+
+  { c:"胭脂", hex:"#9D2933", d:"魏晋",
+    ci:"images/color-06-yanzhi.jpg", cw:"周昉《簪花仕女图》局部",          cc:"Public domain",
+    di:"images/dynasty-06-weijin.jpg",dw:"顾恺之《洛神赋图》局部（宋摹本）",dc:"Public domain",
+    intro:"公元220—420年，玄学清谈、魏晋风度盛行，士人崇尚风骨，书法（二王）与人物画大兴，是中国艺术自觉的时代。" },
+
+  { c:"朱磦", hex:"#F36838", d:"隋",
+    ci:"images/color-07-zhubiao.png",cw:"辽《丹枫呦鹿图》",                cc:"Public domain",
+    di:"images/dynasty-07-sui.jpg",  dw:"隋代蓝釉陶马",                    dc:"CC0 · Gary Todd",
+    intro:"公元581—618年，结束数百年南北分裂重归一统，开创科举制、开凿大运河，贯通南北，为盛唐格局奠基。" },
+
+  { c:"藤黄", hex:"#FFB61E", d:"唐",
+    ci:"images/color-08-tenghuang.jpg",cw:"黄筌《写生珍禽图》",            cc:"Public domain",
+    di:"images/dynasty-08-tang.jpg", dw:"阎立本《步辇图》",                dc:"Public domain",
+    intro:"公元618—907年，历贞观之治、开元盛世，国力鼎盛、万邦来朝，诗歌、书画、乐舞、工艺全面繁荣，气象恢弘。" },
+
+  { c:"花青", hex:"#003472", d:"宋",
+    ci:"images/color-09-huaqing.jpg",cw:"王蒙《青卞隐居图》",              cc:"Public domain",
+    di:"images/dynasty-09-song.jpg", dw:"张择端《清明上河图》局部",        dc:"Public domain",
+    intro:"公元960—1279年，文治鼎盛、理学兴起，文人山水花鸟画与汝、官、哥、钧、定瓷器并臻高峰，尚雅尚意、格物致知。" },
+
+  { c:"石绿", hex:"#16A951", d:"元",
+    ci:"images/color-10-shilv.jpg",  cw:"王希孟《千里江山图》局部",        cc:"Public domain",
+    di:"images/dynasty-10-yuan.jpg", dw:"黄公望《富春山居图》局部",        dc:"Public domain",
+    intro:"公元1271—1368年，蒙古族建立的大一统王朝，文人画（元四家）与元曲杂剧兴盛，士人寄情山水、放逸不羁。" },
+
+  { c:"石青", hex:"#1685A9", d:"明",
+    ci:"images/color-11-shiqing.jpg",cw:"传仇英《明皇幸蜀图》",            cc:"Public domain",
+    di:"images/dynasty-11-ming.jpg", dw:"明代青花瓷瓶",                    dc:"CC0 · Gary Todd",
+    intro:"公元1368—1644年，朱元璋建明，郑和下西洋、营建紫禁城，市民文学与青花瓷、明式家具工艺繁荣，气象端庄。" },
+
+  { c:"洋红", hex:"#FF4777", d:"清",
+    ci:"images/color-12-yanghong.jpg",cw:"恽寿平《牡丹图》",               cc:"Public domain",
+    di:"images/dynasty-12-qing.jpg", dw:"郎世宁《百骏图》局部",            dc:"Public domain",
+    intro:"公元1636—1912年，满族建立的最后一个封建王朝，历康乾盛世，疆域辽阔，工艺美术与瓷器集历代之大成。" }
+];
+
+/* =========================================================
+   题库：15 题 × 4 选项，a = 对应原型下标（0=夏 … 11=清）
+   ========================================================= */
+const QUESTIONS = [
+  { q:"周末参加一场朋友的聚会，你多半会：", o:[
+      {t:"主动张罗，带动全场的气氛", a:7},
+      {t:"找一两位投缘的人深入交谈", a:8},
+      {t:"随性而至，来去都随心情", a:9},
+      {t:"默默照应细节，让一切妥帖周全", a:10} ]},
+
+  { q:"遇到一个重要抉择时，你更倾向：", o:[
+      {t:"跟随直觉，听从内心的声音", a:5},
+      {t:"列出利弊，冷静地权衡比较", a:8},
+      {t:"先干起来，边做边调整", a:3},
+      {t:"征询众人，寻求稳妥的共识", a:2} ]},
+
+  { q:"如果可以自由选择，你理想的居所是：", o:[
+      {t:"简朴的山间小屋，素净自然", a:0},
+      {t:"精致考究的宅院，处处见心思", a:11},
+      {t:"开阔轩昂的府邸，气象宏大", a:4},
+      {t:"清幽的书斋，一几一砚、几架书", a:8} ]},
+
+  { q:"朋友们形容你，最常说的会是：", o:[
+      {t:"热情开朗，很有感染力", a:7},
+      {t:"靠谱稳重，很懂得分寸", a:10},
+      {t:"特立独行，颇有品味", a:5},
+      {t:"洒脱随性，不爱被拘束", a:9} ]},
+
+  { q:"对于规则与流程，你的态度是：", o:[
+      {t:"规则是底线，该守就得守", a:3},
+      {t:"规矩要有，但也讲人情分寸", a:2},
+      {t:"有用就遵守，不适用就变通", a:6},
+      {t:"规则是为人服务的，不必被它绑住", a:9} ]},
+
+  { q:"你心里更看重的是：", o:[
+      {t:"信念与仪式带来的庄重感", a:1},
+      {t:"情感的真挚与精神的自由", a:5},
+      {t:"效率与目标的切实达成", a:3},
+      {t:"秩序与长远安稳的格局", a:10} ]},
+
+  { q:"闲暇时，你最喜欢做的事是：", o:[
+      {t:"呼朋唤友，热闹一场", a:7},
+      {t:"独自读书、写字或听乐", a:8},
+      {t:"出门远行，探访名山大川", a:4},
+      {t:"莳花弄草，亲近自然", a:0} ]},
+
+  { q:"与人起了冲突，你通常会：", o:[
+      {t:"当面表态，当场把话说清楚", a:3},
+      {t:"先安抚情绪，再慢慢讲道理", a:2},
+      {t:"委婉周旋，尽量留有余地", a:11},
+      {t:"先行回避，自己慢慢消化", a:5} ]},
+
+  { q:"在审美上，你更偏爱：", o:[
+      {t:"浓墨重彩、华丽繁复", a:11},
+      {t:"素净淡雅，以留白为上", a:8},
+      {t:"自然野趣，不加雕琢", a:0},
+      {t:"大气磅礴，气象雄浑", a:4} ]},
+
+  { q:"别人郑重托付你一件事，你会：", o:[
+      {t:"郑重应下，一诺必守到底", a:1},
+      {t:"立刻行动，限期务必完成", a:3},
+      {t:"灵活处理，随机应变求成", a:6},
+      {t:"想清楚再应，答应了就负责到底", a:10} ]},
+
+  { q:"你向往的人生状态是：", o:[
+      {t:"建功立业，闯出一番天地", a:4},
+      {t:"自在逍遥，随心而行", a:9},
+      {t:"安稳踏实，细水长流", a:0},
+      {t:"热烈绽放，活得淋漓尽致", a:7} ]},
+
+  { q:"面对全新而陌生的事物，你会：", o:[
+      {t:"兴奋不已，想立刻试一试", a:7},
+      {t:"心怀敬畏，先弄清它的来龙去脉", a:1},
+      {t:"保持谨慎，评估风险再行动", a:10},
+      {t:"乐于变通，愿意在试错中摸索", a:6} ]},
+
+  { q:"你的情绪通常是：", o:[
+      {t:"爱憎分明，喜恶都来得直接", a:1},
+      {t:"平和克制，讲求恰到好处", a:2},
+      {t:"因时因地，能灵活地切换", a:6},
+      {t:"温厚宽容，很少真正动气", a:0} ]},
+
+  { q:"在团队合作里，你常常是：", o:[
+      {t:"定方向、扛责任的那个人", a:4},
+      {t:"协调各方、促成共识的那个人", a:2},
+      {t:"追求完美、紧盯细节的那个人", a:11},
+      {t:"出点子、带来新意的那个人", a:9} ]},
+
+  { q:"你最欣赏的品质是：", o:[
+      {t:"忠信笃敬，始终如一", a:1},
+      {t:"变通通达，与时俱进", a:6},
+      {t:"精致讲究，追求极致", a:11},
+      {t:"潇洒不羁，一片真性情", a:5} ]}
+];
+
+const KEYS = ["A","B","C","D"];
+const TOTAL = QUESTIONS.length;
+
+/* =========================================================
+   状态与界面控制
+   ========================================================= */
+const state = { idx: 0, answers: new Array(TOTAL).fill(null) };
+
+const el = id => document.getElementById(id);
+const screens = { intro: el("screen-intro"), quiz: el("screen-quiz"), result: el("screen-result") };
+
+function show(name){
+  Object.keys(screens).forEach(k => { screens[k].hidden = (k !== name); });
+  const s = screens[name];
+  s.classList.remove("screen"); void s.offsetWidth; s.classList.add("screen");
+  window.scrollTo({ top:0, behavior:"smooth" });
+}
+
+function renderQuestion(){
+  const q = QUESTIONS[state.idx];
+  el("q-count").textContent = `第 ${state.idx + 1} / ${TOTAL} 题`;
+  el("q-bar").style.width = ((state.idx + 1) / TOTAL * 100) + "%";
+  el("q-text").textContent = q.q;
+
+  const box = el("q-opts");
+  box.innerHTML = "";
+  q.o.forEach((opt, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "opt" + (state.answers[state.idx] === i ? " picked" : "");
+    btn.innerHTML = `<span class="k">${KEYS[i]}</span><span class="t">${opt.t}</span>`;
+    btn.addEventListener("click", () => pick(i));
+    box.appendChild(btn);
+  });
+
+  el("btn-prev").disabled = state.idx === 0;
+  el("q-tip").textContent = state.idx === TOTAL - 1 ? "选择后即可查看结果" : "选择后自动进入下一题";
+
+  const card = document.querySelector("#screen-quiz .qcard");
+  card.classList.remove("screen"); void card.offsetWidth; card.classList.add("screen");
+}
+
+function pick(i){
+  state.answers[state.idx] = i;
+  const cards = el("q-opts").children;
+  [...cards].forEach((c, k) => c.classList.toggle("picked", k === i));
+  setTimeout(() => {
+    if (state.idx < TOTAL - 1){ state.idx++; renderQuestion(); }
+    else showResult();
+  }, 240);
+}
+
+function goPrev(){
+  if (state.idx > 0){ state.idx--; renderQuestion(); }
+}
+
+/* ---------- 计分：每选项 +2 ---------- */
+function computeScores(){
+  const scores = new Array(ARCHETYPES.length).fill(0);
+  state.answers.forEach((pickIdx, qi) => {
+    scores[QUESTIONS[qi].o[pickIdx].a] += 2;
+  });
+  return scores;
+}
+
+/* 最高分者胜；并列时优先第 15 题所选原型，其次按固定顺序（下标升序 = 夏→清） */
+function winnerFromScores(scores){
+  const max = Math.max(...scores);
+  const winners = scores.map((s, i) => (s === max ? i : -1)).filter(i => i >= 0);
+  if (winners.length > 1){
+    const q15 = QUESTIONS[TOTAL - 1].o[state.answers[TOTAL - 1]].a;
+    if (winners.includes(q15)) return q15;
+  }
+  return winners[0];
+}
+
+/* ---------- 得分占比饼图 ---------- */
+const PIE = { cx:110, cy:110, rOut:92, rIn:54 };
+const SVGNS = "http://www.w3.org/2000/svg";
+let pieData = [];
+let pieSel = 0;
+
+function polar(r, deg){
+  const rad = (deg - 90) * Math.PI / 180;
+  return [PIE.cx + r * Math.cos(rad), PIE.cy + r * Math.sin(rad)];
+}
+function slicePath(rOut, rIn, a0, a1){
+  const large = (a1 - a0) > 180 ? 1 : 0;
+  const [x0, y0] = polar(rOut, a0), [x1, y1] = polar(rOut, a1);
+  const [x2, y2] = polar(rIn,  a1), [x3, y3] = polar(rIn,  a0);
+  return `M${x0.toFixed(2)} ${y0.toFixed(2)}A${rOut} ${rOut} 0 ${large} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}`
+       + `L${x2.toFixed(2)} ${y2.toFixed(2)}A${rIn} ${rIn} 0 ${large} 0 ${x3.toFixed(2)} ${y3.toFixed(2)}Z`;
+}
+function ringPath(r, a0, a1){
+  const large = (a1 - a0) > 180 ? 1 : 0;
+  const [x0, y0] = polar(r, a0), [x1, y1] = polar(r, a1);
+  return `M${x0.toFixed(2)} ${y0.toFixed(2)}A${r} ${r} 0 ${large} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}`;
+}
+
+function renderPie(scores, winner){
+  const total = scores.reduce((a, b) => a + b, 0);
+  const order = scores.map((s, i) => ({ i, s }))
+                      .filter(o => o.s > 0)
+                      .sort((a, b) => b.s - a.s || a.i - b.i);
+
+  pieData = [];
+  let acc = 0;
+  order.forEach(({ i, s }) => {
+    const pct = s / total;
+    const a0 = acc * 360, a1 = (acc + pct) * 360;
+    acc += pct;
+    pieData.push({ i, s, pct, a0, a1 });
+  });
+
+  const g = el("pie-slices");
+  g.innerHTML = "";
+  pieData.forEach((d, k) => {
+    const p = document.createElementNS(SVGNS, "path");
+    p.setAttribute("class", "sl");
+    p.setAttribute("fill", ARCHETYPES[d.i].hex);
+    p.setAttribute("stroke", "#f7f3e9");
+    p.setAttribute("stroke-width", "1.4");
+    const full = (d.a1 - d.a0) >= 359.999;
+    p.setAttribute("d", full
+      ? slicePath(PIE.rOut, PIE.rIn, 0, 180) + slicePath(PIE.rOut, PIE.rIn, 180, 360)
+      : slicePath(PIE.rOut, PIE.rIn, d.a0, d.a1));
+    p.addEventListener("click", () => { pieSel = k; paintSelection(); });
+    g.appendChild(p);
+  });
+
+  // 最高分色块：外圈标记
+  const wIdx = pieData.findIndex(d => d.i === winner);
+  if (wIdx >= 0){
+    const d = pieData[wIdx];
+    const mk = document.createElementNS(SVGNS, "path");
+    mk.setAttribute("fill", "none");
+    mk.setAttribute("stroke", "#9a2b23");
+    mk.setAttribute("stroke-width", "2.6");
+    mk.setAttribute("stroke-linecap", "round");
+    mk.setAttribute("opacity", ".85");
+    mk.setAttribute("d", ringPath(PIE.rOut + 9, d.a0 + 1.5, d.a1 - 1.5));
+    g.appendChild(mk);
+  }
+
+  pieSel = wIdx >= 0 ? wIdx : 0;
+  paintSelection();
+}
+
+function paintSelection(){
+  const d = pieData[pieSel];
+  if (!d) return;
+
+  const paths = el("pie-slices").querySelectorAll("path.sl");
+  paths.forEach((p, k) => {
+    if (k === pieSel){
+      const mid = (d.a0 + d.a1) / 2;
+      const rad = (mid - 90) * Math.PI / 180;
+      p.setAttribute("transform", `translate(${(Math.cos(rad) * 6).toFixed(2)} ${(Math.sin(rad) * 6).toFixed(2)})`);
+    } else {
+      p.removeAttribute("transform");
+    }
+  });
+
+  const a = ARCHETYPES[d.i];
+  const fg = contrastText(a.hex);
+  el("pie-hole").setAttribute("fill", a.hex);
+  el("pie-name").textContent = a.c;
+  el("pie-name").setAttribute("fill", fg);
+  el("pie-dyn").textContent = a.d;
+  el("pie-dyn").setAttribute("fill", fg);
+  el("pie-cap").textContent = `${a.hex.toUpperCase()} · 得分 ${d.s} · 占比 ${Math.round(d.pct * 100)}%`;
+}
+
+function contrastText(hex){
+  const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+  const lum = (0.299*r + 0.587*g + 0.114*b) / 255;
+  return lum > 0.62 ? "#3a3226" : "#ffffff";
+}
+
+function showResult(){
+  const scores = computeScores();
+  const winner = winnerFromScores(scores);
+  renderPie(scores, winner);
+
+  const a = ARCHETYPES[winner];
+
+  const panel = el("color-panel");
+  const fg = contrastText(a.hex);
+  panel.style.background = a.hex;
+  panel.style.color = fg;
+  el("res-color-name").textContent = a.c;
+  el("res-color-hex").textContent = a.hex.toUpperCase() + "  ·  中国国画颜料色";
+  el("res-color-tag").style.color = fg;
+
+  el("res-color-img").src = a.ci;
+  el("res-color-img").alt = a.cw;
+  el("res-color-work").textContent = a.cw;
+  el("res-color-credit").textContent = a.cc;
+
+  el("res-dyn-img").src = a.di;
+  el("res-dyn-img").alt = a.dw;
+  el("res-dyn-name").textContent = a.d;
+  el("res-dyn-work").textContent = a.dw;
+  el("res-dyn-intro").textContent = a.intro;
+  el("res-dyn-credit").textContent = a.dc;
+
+  show("result");
+}
+
+function restart(){
+  state.idx = 0;
+  state.answers.fill(null);
+  show("intro");
+}
+
+/* ---------- 事件绑定 ---------- */
+el("btn-start").addEventListener("click", () => { state.idx = 0; state.answers.fill(null); renderQuestion(); show("quiz"); });
+el("btn-prev").addEventListener("click", goPrev);
+el("btn-again").addEventListener("click", restart);
+el("btn-home").addEventListener("click", restart);
+</script>
+</body>
+</html>

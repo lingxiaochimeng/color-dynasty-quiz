@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>题库设计 · 15 题</title>
+<style>
+  :root{
+    --paper:#f7f3e9;--paper-2:#fffdf7;--ink:#2b2b2b;--ink-2:#6b6355;--line:#ddd3c0;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:radial-gradient(circle at 18% 8%, #fffdf6 0%, transparent 45%),
+               radial-gradient(circle at 88% 92%, #f2ead9 0%, transparent 50%), var(--paper);
+    color:var(--ink);
+    font-family:"Songti SC","STSong","Source Han Serif SC","Noto Serif SC",SimSun,serif;
+    line-height:1.7;padding:48px 20px 80px;
+  }
+  .wrap{max-width:1000px;margin:0 auto;}
+  header{text-align:center;margin-bottom:12px;}
+  .seal{display:inline-block;font-size:13px;letter-spacing:.35em;color:#9a2b23;
+        border:1px solid #c9a89b;border-radius:3px;padding:5px 12px 5px 16px;margin-bottom:20px;background:#fff8f4;}
+  h1{font-size:32px;font-weight:600;letter-spacing:.1em;margin:0 0 10px;color:#1f1c17;}
+  h1 small{display:block;font-size:13px;font-weight:400;letter-spacing:.28em;color:var(--ink-2);margin-top:10px;}
+  .lead{max-width:780px;margin:20px auto 0;font-size:14.5px;color:var(--ink-2);text-align:justify;}
+  .rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:30px 0 34px;}
+  h2.sec{font-size:17px;letter-spacing:.1em;color:#1f1c17;margin:0 0 16px;padding-left:12px;border-left:3px solid #9a2b23;}
+  .q{background:var(--paper-2);border:1px solid var(--line);border-radius:10px;
+     padding:18px 20px 14px;margin-bottom:16px;box-shadow:0 2px 10px rgba(80,64,40,.05);}
+  .q .qt{font-size:16.5px;font-weight:600;margin-bottom:12px;}
+  .q .qt i{font-style:normal;color:#a8987d;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;margin-right:8px;}
+  .opt{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-top:1px dashed #ece3d2;font-size:14.5px;}
+  .opt:first-of-type{border-top:none;}
+  .opt .k{flex:0 0 20px;color:#a8987d;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;padding-top:2px;}
+  .opt .t{flex:1;}
+  .tag{flex:0 0 auto;font-size:12px;font-family:ui-monospace,Menlo,Consolas,monospace;
+       color:#5b5346;background:#f3ecdc;border:1px solid #e2d7c0;border-radius:20px;padding:1px 9px;white-space:nowrap;}
+  .tag .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle;border:1px solid rgba(0,0,0,.12);}
+  .note{margin-top:34px;padding:20px 22px;background:#fbf7ee;border:1px solid var(--line);border-radius:10px;font-size:13.5px;color:var(--ink-2);}
+  .note h3{font-size:15px;margin:0 0 10px;color:#1f1c17;letter-spacing:.08em;}
+  .note ol{margin:0;padding-left:20px;}
+  .note li{margin:6px 0;}
+  table.bal{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px;}
+  table.bal th,table.bal td{border:1px solid var(--line);padding:7px 10px;text-align:center;}
+  table.bal th{background:#f3ecdc;font-weight:600;color:#4a4438;}
+  table.bal td.ck{color:#2f7d4f;font-weight:600;}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f1ead9;padding:1px 5px;border-radius:3px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="seal">第 二 步 · 题 库</div>
+    <h1>测试题库 · 15 题
+      <small>QUESTIONNAIRE &nbsp;·&nbsp; 15 ITEMS</small>
+    </h1>
+    <p class="lead">
+      共 <b>15 题</b>，每题 <b>4 个选项</b>。每选中一个选项，就为它对应的「颜色—朝代」原型记 <b>+2 分</b>；
+      全部答完后，<b>总分最高的原型即为结果</b>。右侧灰色标签标注了每个选项指向的原型（仅供出题与校对，答题界面不显示）。
+    </p>
+  </header>
+
+  <div class="rule"></div>
+
+  <h2 class="sec">一、题目与选项</h2>
+
+  <div class="q">
+    <div class="qt"><i>Q1</i>周末参加一场朋友的聚会，你多半会：</div>
+    <div class="opt"><span class="k">A</span><span class="t">主动张罗，带动全场的气氛</span><span class="tag"><span class="dot" style="background:#ffb61e"></span>唐 · 藤黄</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">找一两位投缘的人深入交谈</span><span class="tag"><span class="dot" style="background:#003472"></span>宋 · 花青</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">随性而至，来去都随心情</span><span class="tag"><span class="dot" style="background:#16a951"></span>元 · 石绿</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">默默照应细节，让一切妥帖周全</span><span class="tag"><span class="dot" style="background:#1685a9"></span>明 · 石青</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q2</i>遇到一个重要抉择时，你更倾向：</div>
+    <div class="opt"><span class="k">A</span><span class="t">跟随直觉，听从内心的声音</span><span class="tag"><span class="dot" style="background:#9d2933"></span>魏晋 · 胭脂</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">列出利弊，冷静地权衡比较</span><span class="tag"><span class="dot" style="background:#003472"></span>宋 · 花青</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">先干起来，边做边调整</span><span class="tag"><span class="dot" style="background:#50616d"></span>秦 · 墨色</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">征询众人，寻求稳妥的共识</span><span class="tag"><span class="dot" style="background:#ffc64b"></span>周 · 雌黄</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q3</i>如果可以自由选择，你理想的居所是：</div>
+    <div class="opt"><span class="k">A</span><span class="t">简朴的山间小屋，素净自然</span><span class="tag"><span class="dot" style="background:#fff2df"></span>夏 · 蛤白</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">精致考究的宅院，处处见心思</span><span class="tag"><span class="dot" style="background:#ff4777"></span>清 · 洋红</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">开阔轩昂的府邸，气象宏大</span><span class="tag"><span class="dot" style="background:#845a33"></span>汉 · 赭石</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">清幽的书斋，一几一砚、几架书</span><span class="tag"><span class="dot" style="background:#003472"></span>宋 · 花青</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q4</i>朋友们形容你，最常说的会是：</div>
+    <div class="opt"><span class="k">A</span><span class="t">热情开朗，很有感染力</span><span class="tag"><span class="dot" style="background:#ffb61e"></span>唐 · 藤黄</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">靠谱稳重，很懂得分寸</span><span class="tag"><span class="dot" style="background:#1685a9"></span>明 · 石青</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">特立独行，颇有品味</span><span class="tag"><span class="dot" style="background:#9d2933"></span>魏晋 · 胭脂</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">洒脱随性，不爱被拘束</span><span class="tag"><span class="dot" style="background:#16a951"></span>元 · 石绿</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q5</i>对于规则与流程，你的态度是：</div>
+    <div class="opt"><span class="k">A</span><span class="t">规则是底线，该守就得守</span><span class="tag"><span class="dot" style="background:#50616d"></span>秦 · 墨色</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">规矩要有，但也讲人情分寸</span><span class="tag"><span class="dot" style="background:#ffc64b"></span>周 · 雌黄</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">有用就遵守，不适用就变通</span><span class="tag"><span class="dot" style="background:#f36838"></span>隋 · 朱磦</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">规则是为人服务的，不必被它绑住</span><span class="tag"><span class="dot" style="background:#16a951"></span>元 · 石绿</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q6</i>你心里更看重的是：</div>
+    <div class="opt"><span class="k">A</span><span class="t">信念与仪式带来的庄重感</span><span class="tag"><span class="dot" style="background:#ff461f"></span>商 · 朱砂</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">情感的真挚与精神的自由</span><span class="tag"><span class="dot" style="background:#9d2933"></span>魏晋 · 胭脂</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">效率与目标的切实达成</span><span class="tag"><span class="dot" style="background:#50616d"></span>秦 · 墨色</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">秩序与长远安稳的格局</span><span class="tag"><span class="dot" style="background:#1685a9"></span>明 · 石青</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q7</i>闲暇时，你最喜欢做的事是：</div>
+    <div class="opt"><span class="k">A</span><span class="t">呼朋唤友，热闹一场</span><span class="tag"><span class="dot" style="background:#ffb61e"></span>唐 · 藤黄</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">独自读书、写字或听乐</span><span class="tag"><span class="dot" style="background:#003472"></span>宋 · 花青</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">出门远行，探访名山大川</span><span class="tag"><span class="dot" style="background:#845a33"></span>汉 · 赭石</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">莳花弄草，亲近自然</span><span class="tag"><span class="dot" style="background:#fff2df"></span>夏 · 蛤白</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q8</i>与人起了冲突，你通常会：</div>
+    <div class="opt"><span class="k">A</span><span class="t">当面表态，当场把话说清楚</span><span class="tag"><span class="dot" style="background:#50616d"></span>秦 · 墨色</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">先安抚情绪，再慢慢讲道理</span><span class="tag"><span class="dot" style="background:#ffc64b"></span>周 · 雌黄</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">委婉周旋，尽量留有余地</span><span class="tag"><span class="dot" style="background:#ff4777"></span>清 · 洋红</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">先行回避，自己慢慢消化</span><span class="tag"><span class="dot" style="background:#9d2933"></span>魏晋 · 胭脂</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q9</i>在审美上，你更偏爱：</div>
+    <div class="opt"><span class="k">A</span><span class="t">浓墨重彩、华丽繁复</span><span class="tag"><span class="dot" style="background:#ff4777"></span>清 · 洋红</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">素净淡雅，以留白为上</span><span class="tag"><span class="dot" style="background:#003472"></span>宋 · 花青</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">自然野趣，不加雕琢</span><span class="tag"><span class="dot" style="background:#fff2df"></span>夏 · 蛤白</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">大气磅礴，气象雄浑</span><span class="tag"><span class="dot" style="background:#845a33"></span>汉 · 赭石</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q10</i>别人郑重托付你一件事，你会：</div>
+    <div class="opt"><span class="k">A</span><span class="t">郑重应下，一诺必守到底</span><span class="tag"><span class="dot" style="background:#ff461f"></span>商 · 朱砂</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">立刻行动，限期务必完成</span><span class="tag"><span class="dot" style="background:#50616d"></span>秦 · 墨色</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">灵活处理，随机应变求成</span><span class="tag"><span class="dot" style="background:#f36838"></span>隋 · 朱磦</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">想清楚再应，答应了就负责到底</span><span class="tag"><span class="dot" style="background:#1685a9"></span>明 · 石青</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q11</i>你向往的人生状态是：</div>
+    <div class="opt"><span class="k">A</span><span class="t">建功立业，闯出一番天地</span><span class="tag"><span class="dot" style="background:#845a33"></span>汉 · 赭石</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">自在逍遥，随心而行</span><span class="tag"><span class="dot" style="background:#16a951"></span>元 · 石绿</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">安稳踏实，细水长流</span><span class="tag"><span class="dot" style="background:#fff2df"></span>夏 · 蛤白</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">热烈绽放，活得淋漓尽致</span><span class="tag"><span class="dot" style="background:#ffb61e"></span>唐 · 藤黄</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q12</i>面对全新而陌生的事物，你会：</div>
+    <div class="opt"><span class="k">A</span><span class="t">兴奋不已，想立刻试一试</span><span class="tag"><span class="dot" style="background:#ffb61e"></span>唐 · 藤黄</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">心怀敬畏，先弄清它的来龙去脉</span><span class="tag"><span class="dot" style="background:#ff461f"></span>商 · 朱砂</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">保持谨慎，评估风险再行动</span><span class="tag"><span class="dot" style="background:#1685a9"></span>明 · 石青</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">乐于变通，愿意在试错中摸索</span><span class="tag"><span class="dot" style="background:#f36838"></span>隋 · 朱磦</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q13</i>你的情绪通常是：</div>
+    <div class="opt"><span class="k">A</span><span class="t">爱憎分明，喜恶都来得直接</span><span class="tag"><span class="dot" style="background:#ff461f"></span>商 · 朱砂</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">平和克制，讲求恰到好处</span><span class="tag"><span class="dot" style="background:#ffc64b"></span>周 · 雌黄</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">因时因地，能灵活地切换</span><span class="tag"><span class="dot" style="background:#f36838"></span>隋 · 朱磦</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">温厚宽容，很少真正动气</span><span class="tag"><span class="dot" style="background:#fff2df"></span>夏 · 蛤白</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q14</i>在团队合作里，你常常是：</div>
+    <div class="opt"><span class="k">A</span><span class="t">定方向、扛责任的那个人</span><span class="tag"><span class="dot" style="background:#845a33"></span>汉 · 赭石</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">协调各方、促成共识的那个人</span><span class="tag"><span class="dot" style="background:#ffc64b"></span>周 · 雌黄</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">追求完美、紧盯细节的那个人</span><span class="tag"><span class="dot" style="background:#ff4777"></span>清 · 洋红</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">出点子、带来新意的那个人</span><span class="tag"><span class="dot" style="background:#16a951"></span>元 · 石绿</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qt"><i>Q15</i>你最欣赏的品质是：</div>
+    <div class="opt"><span class="k">A</span><span class="t">忠信笃敬，始终如一</span><span class="tag"><span class="dot" style="background:#ff461f"></span>商 · 朱砂</span></div>
+    <div class="opt"><span class="k">B</span><span class="t">变通通达，与时俱进</span><span class="tag"><span class="dot" style="background:#f36838"></span>隋 · 朱磦</span></div>
+    <div class="opt"><span class="k">C</span><span class="t">精致讲究，追求极致</span><span class="tag"><span class="dot" style="background:#ff4777"></span>清 · 洋红</span></div>
+    <div class="opt"><span class="k">D</span><span class="t">潇洒不羁，一片真性情</span><span class="tag"><span class="dot" style="background:#9d2933"></span>魏晋 · 胭脂</span></div>
+  </div>
+
+  <div class="note">
+    <h3>二、计分与判定规则</h3>
+    <ol>
+      <li>每个选项固定为对应原型 <code>+2</code> 分；15 题共 30 分。</li>
+      <li>答题结束后，<b>累计得分最高的原型即为结果</b>，展示其颜色与对应朝代简介。</li>
+      <li><b>并列时的处理</b>：若出现最高分并列，则优先取用户在第 15 题所选选项对应的原型；若仍并列，则按原型的固定顺序（夏→商→周→秦→汉→魏晋→隋→唐→宋→元→明→清）取靠前者。</li>
+      <li>答题界面<b>不显示</b>选项旁的原型标签，也<b>不显示</b>任何性格描述文字。</li>
+    </ol>
+
+    <h3 style="margin-top:18px;">三、均衡性自检</h3>
+    <p style="margin:4px 0 0;">下列统计确认每个原型在题库中恰好出现 5 次（5 × 2 = 10 分上限），保证 12 种结果机会均等。</p>
+    <table class="bal">
+      <tr><th>原型</th><th>夏·蛤白</th><th>商·朱砂</th><th>周·雌黄</th><th>秦·墨色</th><th>汉·赭石</th><th>魏晋·胭脂</th><th>隋·朱磦</th><th>唐·藤黄</th><th>宋·花青</th><th>元·石绿</th><th>明·石青</th><th>清·洋红</th></tr>
+      <tr><td>出现次数</td><td class="ck">5</td><td class="ck">5</td><td class="ck">5</td><td class="ck">5</td><td class="ck">5</td><td class="ck">5</td><td class="ck">5</td><td class="ck">5</td><td class="ck">5</td><td class="ck">5</td><td class="ck">5</td><td class="ck">5</td></tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>

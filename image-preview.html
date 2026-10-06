@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>配图预览 · 颜色与朝代</title>
+<style>
+  :root{--paper:#f7f3e9;--paper-2:#fffdf7;--ink:#2b2b2b;--ink-2:#6b6355;--line:#ddd3c0;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:radial-gradient(circle at 18% 6%,#fffdf6 0,transparent 45%),radial-gradient(circle at 88% 94%,#f2ead9 0,transparent 50%),var(--paper);
+       color:var(--ink);font-family:"Songti SC","STSong","Source Han Serif SC","Noto Serif SC",SimSun,serif;line-height:1.7;padding:46px 20px 80px;}
+  .wrap{max-width:1180px;margin:0 auto;}
+  header{text-align:center;margin-bottom:8px;}
+  .seal{display:inline-block;font-size:13px;letter-spacing:.35em;color:#9a2b23;border:1px solid #c9a89b;border-radius:3px;padding:5px 12px 5px 16px;margin-bottom:18px;background:#fff8f4;}
+  h1{font-size:31px;font-weight:600;letter-spacing:.1em;margin:0 0 8px;color:#1f1c17;}
+  h1 small{display:block;font-size:13px;font-weight:400;letter-spacing:.26em;color:var(--ink-2);margin-top:9px;}
+  .lead{max-width:800px;margin:18px auto 0;font-size:14.5px;color:var(--ink-2);text-align:justify;}
+  .rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:28px 0 30px;}
+  h2.sec{font-size:17px;letter-spacing:.1em;color:#1f1c17;margin:0 0 18px;padding-left:12px;border-left:3px solid #9a2b23;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:20px;}
+  .card{background:var(--paper-2);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(80,64,40,.06);display:flex;flex-direction:column;}
+  .strip{height:38px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;}
+  .strip .nm{font-size:16px;font-weight:600;letter-spacing:.1em;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.35);}
+  .strip .hx{font-size:11.5px;font-family:ui-monospace,Menlo,Consolas,monospace;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.35);}
+  .imgbox{background:#efe9db;display:flex;align-items:center;justify-content:center;height:250px;overflow:hidden;}
+  .imgbox img{max-width:100%;max-height:250px;object-fit:contain;display:block;}
+  .cap{padding:12px 14px 14px;flex:1;}
+  .cap .ttl{font-size:14.5px;font-weight:600;color:#2b2b2b;}
+  .cap .au{font-size:12.5px;color:var(--ink-2);margin-top:4px;}
+  .badge{display:inline-block;font-size:11px;font-family:ui-monospace,Menlo,Consolas,monospace;border-radius:20px;padding:1px 8px;margin-top:8px;border:1px solid #e2d7c0;background:#f3ecdc;color:#5b5346;}
+  .dyn{display:flex;align-items:baseline;gap:9px;padding:13px 14px 0;}
+  .dyn .d{font-size:19px;font-weight:600;letter-spacing:.12em;color:#8a2b23;}
+  .dyn .sub{font-size:12.5px;color:var(--ink-2);}
+  .note{margin-top:34px;padding:18px 22px;background:#fbf7ee;border:1px solid var(--line);border-radius:10px;font-size:13.5px;color:var(--ink-2);}
+  .note h3{font-size:15px;margin:0 0 10px;color:#1f1c17;letter-spacing:.08em;}
+  .note ul{margin:0;padding-left:20px;} .note li{margin:5px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="seal">配 图 预 览</div>
+    <h1>颜色 · 国画 ／ 朝代 · 文物 配图预览
+      <small>IMAGE PAIRING PREVIEW</small>
+    </h1>
+    <p class="lead">
+      下方 12 张为「以该颜色为主调的中国古画」，12 张为「各朝代的代表性图像」。全部取自维基共享资源（Wikimedia Commons）
+      的公有领域或知识共享授权作品，已下载到本地 <code>images/</code> 目录，离线可用。
+    </p>
+  </header>
+  <div class="rule"></div>
+
+  <h2 class="sec">一、颜色 → 国画（以该色为主调）</h2>
+  <div class="grid">
+    <div class="card"><div class="strip" style="background:#fff2df"><span class="nm" style="color:#8a7a5c;text-shadow:none">蛤白</span><span class="hx" style="color:#8a7a5c;text-shadow:none">#FFF2DF</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/color-01-bai.jpg" alt="寒江独钓图"></div>
+      <div class="cap"><div class="ttl">马远《寒江独钓图》</div><div class="au">南宋 · 大面积留白，素白空灵</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="strip" style="background:#ff461f"><span class="nm">朱砂</span><span class="hx">#FF461F</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/color-02-zhusha.jpg" alt="红白芙蓉图"></div>
+      <div class="cap"><div class="ttl">李迪《红白芙蓉图》</div><div class="au">南宋 · 朱砂重彩设色</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="strip" style="background:#ffc64b"><span class="nm" style="color:#7a5c12;text-shadow:none">雌黄</span><span class="hx" style="color:#7a5c12;text-shadow:none">#FFC64B</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/color-03-cihuang.jpg" alt="桑枝黄鸟"></div>
+      <div class="cap"><div class="ttl">宋《桑枝黄鸟图》</div><div class="au">宋代 · 藤黄、雌黄染羽</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="strip" style="background:#50616d"><span class="nm">墨色</span><span class="hx">#50616D</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/color-04-mose.jpg" alt="泼墨仙人图"></div>
+      <div class="cap"><div class="ttl">梁楷《泼墨仙人图》</div><div class="au">南宋 · 纯以水墨写意</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="strip" style="background:#845a33"><span class="nm">赭石</span><span class="hx">#845A33</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/color-05-zheshi.jpg" alt="溪山行旅图"></div>
+      <div class="cap"><div class="ttl">范宽《溪山行旅图》</div><div class="au">北宋 · 赭石淡彩、雄浑厚重</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="strip" style="background:#9d2933"><span class="nm">胭脂</span><span class="hx">#9D2933</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/color-06-yanzhi.jpg" alt="簪花仕女图"></div>
+      <div class="cap"><div class="ttl">周昉《簪花仕女图》局部</div><div class="au">唐 · 胭脂晕颊、绮罗设色</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="strip" style="background:#f36838"><span class="nm">朱磦</span><span class="hx">#F36838</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/color-07-zhubiao.png" alt="丹枫呦鹿图"></div>
+      <div class="cap"><div class="ttl">辽《丹枫呦鹿图》</div><div class="au">五代辽 · 朱磦、橘红满幅秋色</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="strip" style="background:#ffb61e"><span class="nm" style="color:#6b4a00;text-shadow:none">藤黄</span><span class="hx" style="color:#6b4a00;text-shadow:none">#FFB61E</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/color-08-tenghuang.jpg" alt="写生珍禽图"></div>
+      <div class="cap"><div class="ttl">黄筌《写生珍禽图》</div><div class="au">五代 · 藤黄明快、工笔设色</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="strip" style="background:#003472"><span class="nm">花青</span><span class="hx">#003472</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/color-09-huaqing.jpg" alt="青卞隐居图"></div>
+      <div class="cap"><div class="ttl">王蒙《青卞隐居图》</div><div class="au">元 · 花青水墨、苍郁深邃</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="strip" style="background:#16a951"><span class="nm">石绿</span><span class="hx">#16A951</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/color-10-shilv.jpg" alt="千里江山图"></div>
+      <div class="cap"><div class="ttl">王希孟《千里江山图》局部</div><div class="au">北宋 · 石绿石青、青绿重彩</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="strip" style="background:#1685a9"><span class="nm">石青</span><span class="hx">#1685A9</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/color-11-shiqing.jpg" alt="明皇幸蜀图"></div>
+      <div class="cap"><div class="ttl">传仇英《明皇幸蜀图》</div><div class="au">明 · 石青石绿、重彩青绿山水</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="strip" style="background:#ff4777"><span class="nm">洋红</span><span class="hx">#FF4777</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/color-12-yanghong.jpg" alt="牡丹图"></div>
+      <div class="cap"><div class="ttl">恽寿平《牡丹图》</div><div class="au">清 · 没骨法、洋红娇艳</div><span class="badge">Public domain</span></div></div>
+  </div>
+
+  <div class="rule"></div>
+
+  <h2 class="sec">二、朝代 → 代表性图像</h2>
+  <div class="grid">
+    <div class="card"><div class="dyn"><span class="d">夏</span><span class="sub">二里头 · 嵌绿松石铜牌饰</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/dynasty-01-xia.jpg" alt="二里头嵌绿松石铜牌饰"></div>
+      <div class="cap"><div class="ttl">嵌绿松石兽面纹铜牌饰（二里头文化）</div><div class="au">约前1900–前1350年 · 最早的青铜镶嵌工艺</div><span class="badge">CC0 · Daderot</span></div></div>
+
+    <div class="card"><div class="dyn"><span class="d">商</span><span class="sub">后母戊鼎</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/dynasty-02-shang.jpg" alt="后母戊鼎"></div>
+      <div class="cap"><div class="ttl">后母戊鼎（司母戊鼎）</div><div class="au">商王武丁时期 · 中国最重青铜器</div><span class="badge">CC0 · Gary Todd</span></div></div>
+
+    <div class="card"><div class="dyn"><span class="d">周</span><span class="sub">何尊</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/dynasty-03-zhou.jpg" alt="何尊"></div>
+      <div class="cap"><div class="ttl">何尊（西周青铜尊）</div><div class="au">内底铭文含最早的“中国”二字</div><span class="badge">CC0 · Gary Todd</span></div></div>
+
+    <div class="card"><div class="dyn"><span class="d">秦</span><span class="sub">兵马俑</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/dynasty-04-qin.jpg" alt="兵马俑"></div>
+      <div class="cap"><div class="ttl">秦始皇兵马俑一号坑</div><div class="au">“世界第八大奇迹”</div><span class="badge">CC0 · Gary Todd</span></div></div>
+
+    <div class="card"><div class="dyn"><span class="d">汉</span><span class="sub">青铜马</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/dynasty-05-han.jpg" alt="汉代青铜马"></div>
+      <div class="cap"><div class="ttl">汉代青铜马</div><div class="au">西汉 · 青铜铸马，雄健昂扬</div><span class="badge">CC0 · Gary Todd</span></div></div>
+
+    <div class="card"><div class="dyn"><span class="d">魏晋</span><span class="sub">洛神赋图</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/dynasty-06-weijin.jpg" alt="洛神赋图"></div>
+      <div class="cap"><div class="ttl">顾恺之《洛神赋图》局部（宋摹本）</div><div class="au">东晋 · 人物画与“魏晋风度”</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="dyn"><span class="d">隋</span><span class="sub">蓝釉陶马</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/dynasty-07-sui.jpg" alt="隋代蓝釉陶马"></div>
+      <div class="cap"><div class="ttl">隋代蓝釉陶马</div><div class="au">隋 · 蓝釉陶塑、承前启后</div><span class="badge">CC0 · Gary Todd</span></div></div>
+
+    <div class="card"><div class="dyn"><span class="d">唐</span><span class="sub">步辇图</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/dynasty-08-tang.jpg" alt="步辇图"></div>
+      <div class="cap"><div class="ttl">阎立本《步辇图》</div><div class="au">唐 · 汉藏和亲、盛世气象</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="dyn"><span class="d">宋</span><span class="sub">清明上河图</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/dynasty-09-song.jpg" alt="清明上河图"></div>
+      <div class="cap"><div class="ttl">张择端《清明上河图》局部</div><div class="au">北宋 · 市井繁华的风俗长卷</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="dyn"><span class="d">元</span><span class="sub">富春山居图</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/dynasty-10-yuan.jpg" alt="富春山居图"></div>
+      <div class="cap"><div class="ttl">黄公望《富春山居图》局部</div><div class="au">元 · 文人山水画的巅峰</div><span class="badge">Public domain</span></div></div>
+
+    <div class="card"><div class="dyn"><span class="d">明</span><span class="sub">青花瓷</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/dynasty-11-ming.jpg" alt="明青花瓷"></div>
+      <div class="cap"><div class="ttl">明代 青花瓷瓶</div><div class="au">明代 · 青花瓷的黄金时代</div><span class="badge">CC0 · Gary Todd</span></div></div>
+
+    <div class="card"><div class="dyn"><span class="d">清</span><span class="sub">百骏图</span></div>
+      <div class="imgbox"><img loading="lazy" src="images/dynasty-12-qing.jpg" alt="百骏图"></div>
+      <div class="cap"><div class="ttl">郎世宁《百骏图》局部</div><div class="au">清 · 中西合璧的宫廷绘画</div><span class="badge">Public domain</span></div></div>
+  </div>
+
+  <div class="note">
+    <h3>素材与授权说明</h3>
+    <ul>
+      <li>全部图片来自 <b>Wikimedia Commons</b>，已下载至本地 <code>images/</code>（约 26MB，离线可用）。</li>
+      <li>授权类型：全部为 <b>Public domain（公有领域）</b> 或 <b>CC0（公共领域贡献）</b>，可自由使用、修改与再分发，无需署名（应用内仍附出处与作者，见 <code>images/credits.json</code>）。</li>
+      <li>图片按 1400px 宽度取用，兼顾清晰度与体积；如需更高清或更换作品，可随时调整。</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
